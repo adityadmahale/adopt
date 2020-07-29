@@ -1,22 +1,23 @@
 import React, { Component } from "react";
+import { NavLink, Link } from "react-router-dom";
 
 class Header extends Component {
   state = {};
 
   left = [
-    { name: "Home", url: "#" },
-    { name: "Shop", url: "#" },
+    { name: "Home", path: "/home" },
+    { name: "Shop", path: "/shop" },
   ];
   right = [
-    { name: "Login", url: "#" },
-    { name: "Register", url: "#" },
+    { name: "Login", path: "/login" },
+    { name: "Register", path: "/register" },
   ];
 
   renderLogo = () => {
     return (
-      <a className="navbar-brand" href="#">
+      <Link className="navbar-brand" to="/">
         <img src="logo.jpg" alt="logo" />
-      </a>
+      </Link>
     );
   };
 
@@ -42,10 +43,10 @@ class Header extends Component {
       <ul className={classes}>
         {links.map((link) => {
           return (
-            <li className="nav-item active px-2" key={link.name}>
-              <a className="nav-link" href={link.url}>
+            <li className="nav-item px-2" key={link.name}>
+              <NavLink className="nav-link" to={link.path}>
                 {link.name}
-              </a>
+              </NavLink>
             </li>
           );
         })}
