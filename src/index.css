@@ -1,13 +1,53 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400&display=swap");
+
+html,
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  padding: 0;
+}
+
+body {
+  font-family: "Ubuntu", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    "Oxygen", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.navbar-brand {
+  padding: 0;
+  width: 40%;
+}
+
+.navbar-brand img {
+  width: 100%;
+  height: auto;
+}
+
+.navbar {
+  padding: 0;
+  background-color: rgb(29, 201, 115);
+  font-size: 125%;
+}
+
+.navbar a {
+  color: #fff;
+}
+
+footer {
+  background-color: rgb(29, 201, 115);
+  text-align: center;
+  padding: 50px;
+  color: #fff;
+}
+
+@media screen and (min-width: 768px) {
+  .navbar-brand {
+    width: 8%;
+  }
 }
