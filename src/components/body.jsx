@@ -10,17 +10,19 @@ class Body extends Component {
   state = {};
   render() {
     return (
-      <main className="container">
-        <Switch>
-          <Route path="/home" component={Home} />
-          <Route path="/login" component={Login} />
-          <Route path="/register" component={Register} />
-          <Route path="/shop" component={Shop} />
-          <Route path="/not-found" component={NotFound} />
-          <Redirect from="/" exact to="/home" />
-          <Redirect to="/not-found" />
-        </Switch>
-      </main>
+      <section>
+        <main className="container">
+          <Switch>
+            <Route path="/home" component={Home} />
+            <Route path="/login" component={Login} />
+            <Route path="/register" component={Register} />
+            <Route path="/shop" component={Shop} />
+            <Route path="/not-found" component={NotFound} />
+            <Redirect from="/" exact to="/home" />
+            <Redirect to="/not-found" />
+          </Switch>
+        </main>
+      </section>
     );
   }
 }

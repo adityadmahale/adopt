@@ -1,9 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Zilla+Slab&display=swap");
 
 html,
-body {
+body,
+.App,
+#root {
   margin: 0;
   padding: 0;
+  height: 100%;
 }
 
 body {
@@ -34,10 +37,15 @@ code {
   padding: 0;
   background-color: #388087;
   font-size: 125%;
+  margin-bottom: 30px;
 }
 
 .navbar a {
   color: #fff;
+}
+
+section {
+  height: 75%;
 }
 
 footer {
