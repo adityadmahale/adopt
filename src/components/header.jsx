@@ -24,7 +24,7 @@ class Header extends Component {
   renderToggleButton = () => {
     return (
       <button
-        className="navbar-toggler"
+        className="navbar-toggler navbar-dark"
         type="button"
         data-toggle="collapse"
         data-target="#navbarSupportedContent"

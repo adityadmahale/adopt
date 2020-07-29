@@ -37,7 +37,6 @@ code {
   padding: 0;
   background-color: #388087;
   font-size: 125%;
-  margin-bottom: 30px;
 }
 
 .navbar a {
@@ -45,7 +44,7 @@ code {
 }
 
 section {
-  height: 75%;
+  height: 80%;
 }
 
 footer {
@@ -58,5 +57,11 @@ footer {
 @media screen and (min-width: 768px) {
   .navbar-brand {
     width: 8%;
+  }
+
+  section {
+    background-image: url("/plants.jpg");
+    background-position: right top;
+    background-repeat: no-repeat;
   }
 }
