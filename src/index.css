@@ -54,6 +54,29 @@ footer {
   color: #fff;
 }
 
+.filter {
+  color: #388087;
+  display: inline-block;
+  padding: 12px;
+  font-size: 14px;
+  border: 2px solid #388087;
+}
+
+.filter:hover {
+  cursor: pointer;
+  background-color: #f6f6f2;
+}
+
+.filter-selected {
+  color: #fff;
+  background-color: #388087;
+}
+
+.filter-selected:hover {
+  color: #fff;
+  background-color: #388087;
+}
+
 @media screen and (min-width: 768px) {
   .navbar-brand {
     width: 8%;

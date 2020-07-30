@@ -11,7 +11,7 @@ class Body extends Component {
   render() {
     return (
       <section>
-        <main className="container">
+        <main className="container pt-4">
           <Switch>
             <Route path="/home" component={Home} />
             <Route path="/login" component={Login} />
