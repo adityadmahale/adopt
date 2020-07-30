@@ -77,6 +77,12 @@ footer {
   background-color: #388087;
 }
 
+.search {
+  border: 2px solid #388087;
+  border-radius: 6px;
+  padding: 8px;
+}
+
 @media screen and (min-width: 768px) {
   .navbar-brand {
     width: 8%;

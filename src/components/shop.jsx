@@ -1,17 +1,36 @@
 import React, { Component } from "react";
 import Filter from "./filter";
+import Search from "./search";
 
 class Shop extends Component {
   state = {
-    type: null,
+    category: null,
+    searchString: "",
   };
 
-  handleSelect = (type) => {
-    this.setState({ type });
+  handleSelect = (category) => {
+    this.setState({ category });
+  };
+
+  handleSearch = (searchString) => {
+    this.setState({ searchString });
   };
 
   render() {
-    return <Filter onSelect={this.handleSelect} selected={this.state.type} />;
+    const { category, searchString } = this.state;
+
+    return (
+      <React.Fragment>
+        <div className="row">
+          <div className="col-12 col-md-7">
+            <Filter onSelect={this.handleSelect} selected={category} />
+          </div>
+          <div className="col col-md-5">
+            <Search onSearch={this.handleSearch} value={searchString} />
+          </div>
+        </div>
+      </React.Fragment>
+    );
   }
 }
 
