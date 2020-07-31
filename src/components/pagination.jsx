@@ -8,7 +8,7 @@ const Pagination = ({ pageSize, itemNumbers, pageNumber, onPageChange }) => {
   const pageList = _.range(1, pages + 1);
   const classes = "page-link";
   return (
-    <ul className="pagination justify-content-center">
+    <ul className="pagination justify-content-center mt-2">
       {pageList.map((page) => (
         <li className="page-item" key={page}>
           <a
