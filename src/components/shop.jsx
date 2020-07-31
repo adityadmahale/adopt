@@ -4,6 +4,7 @@ import Search from "./search";
 import Pagination from "./pagination";
 import Card from "./card";
 import plantsList from "../services/shopService";
+import categories from "../services/categoryService";
 import { paginate } from "../utils/paginate";
 
 class Shop extends Component {
@@ -13,10 +14,12 @@ class Shop extends Component {
     pageNumber: 1,
     pageSize: 6,
     plants: [],
+    categories: [],
   };
 
   componentDidMount() {
     this.setState({ plants: plantsList });
+    this.setState({ categories: [{ id: 0, name: "All" }, ...categories] });
   }
 
   handleSelect = (category) => {
@@ -33,6 +36,7 @@ class Shop extends Component {
 
   render() {
     const {
+      categories: allCategories,
       category,
       searchString,
       pageNumber,
@@ -46,7 +50,11 @@ class Shop extends Component {
       <React.Fragment>
         <div className="row">
           <div className="col-12 col-md-7">
-            <Filter onSelect={this.handleSelect} selected={category} />
+            <Filter
+              onSelect={this.handleSelect}
+              selected={category}
+              items={allCategories}
+            />
           </div>
           <div className="col col-md-5">
             <Search onSearch={this.handleSearch} value={searchString} />
