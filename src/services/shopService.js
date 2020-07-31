@@ -15,4 +15,16 @@ export default [
     category: "Tropical and subtropical",
     path: "",
   },
+  {
+    id: 7,
+    name: "Money Plant",
+    category: "Tropical and subtropical",
+    path: "",
+  },
+  {
+    id: 8,
+    name: "Money Plant",
+    category: "Tropical and subtropical",
+    path: "",
+  },
 ];
