@@ -34,9 +34,8 @@ class Shop extends Component {
     this.setState({ pageNumber });
   };
 
-  render() {
+  getPagedData = () => {
     const {
-      categories: allCategories,
       category,
       searchString,
       pageNumber,
@@ -48,7 +47,25 @@ class Shop extends Component {
       category !== "All"
         ? allPlants.filter((plant) => plant.category === category)
         : allPlants;
-    const plants = paginate(filtered, pageSize, pageNumber);
+    const searched = filtered.filter((plant) =>
+      plant.name.toLowerCase().startsWith(searchString.toLowerCase())
+    );
+    return {
+      filteredPlants: paginate(searched, pageSize, pageNumber),
+      itemLength: searched.length,
+    };
+  };
+
+  render() {
+    const {
+      categories: allCategories,
+      category,
+      searchString,
+      pageNumber,
+      pageSize,
+    } = this.state;
+
+    const { filteredPlants, itemLength } = this.getPagedData();
 
     return (
       <React.Fragment>
@@ -66,7 +83,7 @@ class Shop extends Component {
         </div>
 
         <div className="row">
-          {plants.map((plant) => (
+          {filteredPlants.map((plant) => (
             <div className="col-12 col-md-4" key={plant.id}>
               <Card
                 title={plant.name}
@@ -81,7 +98,7 @@ class Shop extends Component {
           <div className="col-12">
             <Pagination
               pageSize={pageSize}
-              itemNumbers={filtered.length}
+              itemNumbers={itemLength}
               pageNumber={pageNumber}
               onPageChange={this.handlePageChange}
             />
