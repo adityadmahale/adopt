@@ -2,6 +2,7 @@ import React from "react";
 
 const Filter = ({ onSelect, selected }) => {
   const items = [
+    "All",
     "Tropical and subtropical",
     "Succulents",
     "Forced bulbs",
