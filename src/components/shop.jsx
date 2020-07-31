@@ -7,7 +7,7 @@ class Shop extends Component {
   state = {
     category: "All",
     searchString: "",
-    pageNumber: null,
+    pageNumber: 1,
   };
 
   handleSelect = (category) => {

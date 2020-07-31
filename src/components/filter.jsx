@@ -15,7 +15,7 @@ const Filter = ({ onSelect, selected }) => {
     <React.Fragment>
       {items.map((item) => (
         <span
-          className={selected === item ? classes + " filter-selected" : classes}
+          className={selected === item ? classes + " item-selected" : classes}
           onClick={() => onSelect(item)}
           key={item}
         >

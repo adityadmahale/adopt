@@ -67,8 +67,13 @@ footer {
   background-color: #f6f6f2;
 }
 
-.filter-selected,
-.filter-selected:hover {
+.page-link {
+  color: #388087;
+  border: 1px solid #388087;
+}
+
+.item-selected,
+.item-selected:hover {
   color: #fff;
   background-color: #388087;
 }
