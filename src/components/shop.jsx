@@ -44,7 +44,11 @@ class Shop extends Component {
       plants: allPlants,
     } = this.state;
 
-    const plants = paginate(allPlants, pageSize, pageNumber);
+    const filtered =
+      category !== "All"
+        ? allPlants.filter((plant) => plant.category === category)
+        : allPlants;
+    const plants = paginate(filtered, pageSize, pageNumber);
 
     return (
       <React.Fragment>
@@ -77,7 +81,7 @@ class Shop extends Component {
           <div className="col-12">
             <Pagination
               pageSize={pageSize}
-              itemNumbers={allPlants.length}
+              itemNumbers={filtered.length}
               pageNumber={pageNumber}
               onPageChange={this.handlePageChange}
             />
