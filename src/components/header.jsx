@@ -56,7 +56,7 @@ class Header extends Component {
 
   render() {
     return (
-      <nav className="navbar navbar-expand-lg text-light">
+      <nav className="navbar navbar-expand-lg text-light sticky-top">
         {this.renderLogo()}
         {this.renderToggleButton()}
         <div className="collapse navbar-collapse" id="navbarSupportedContent">

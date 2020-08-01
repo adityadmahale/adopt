@@ -44,7 +44,7 @@ code {
 }
 
 section {
-  height: 80%;
+  min-height: 80%;
 }
 
 footer {
@@ -82,6 +82,18 @@ footer {
   border: 2px solid #388087;
   border-radius: 6px;
   padding: 8px;
+}
+
+.card {
+  border: 1px solid #badfe7;
+  box-shadow: 5px 5px 5px #f6f6f2;
+}
+
+.card-img-top {
+  width: 100%;
+  max-height: 175px;
+  object-fit: cover;
+  padding: 15px;
 }
 
 @media screen and (min-width: 768px) {
