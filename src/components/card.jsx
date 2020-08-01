@@ -5,7 +5,7 @@ const Card = ({ title, description, imagePath }) => {
     <div className="card mt-3">
       <img className="card-img-top" src={imagePath} alt="Houseplant" />
       <div className="card-body pt-1">
-        <h5 className="card-title">{title}</h5>
+        <h4 className="card-title">{title}</h4>
         <div className="row">
           <div className="col-6 align-self-center">
             <p className="card-text">Details</p>

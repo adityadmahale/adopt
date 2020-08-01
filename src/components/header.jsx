@@ -2,7 +2,24 @@ import React, { Component } from "react";
 import { NavLink, Link } from "react-router-dom";
 
 class Header extends Component {
-  state = {};
+  state = {
+    width: 0,
+  };
+
+  collapseButtonRef = React.createRef();
+
+  componentDidMount() {
+    this.updateWindowDimensions();
+    window.addEventListener("resize", this.updateWindowDimensions);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.updateWindowDimensions);
+  }
+
+  updateWindowDimensions = () => {
+    this.setState({ width: window.innerWidth });
+  };
 
   left = [
     { name: "Home", path: "/home" },
@@ -31,6 +48,7 @@ class Header extends Component {
         aria-controls="navbarSupportedContent"
         aria-expanded="false"
         aria-label="Toggle navigation"
+        ref={this.collapseButtonRef}
       >
         <span className="navbar-toggler-icon"></span>
       </button>
@@ -44,7 +62,14 @@ class Header extends Component {
         {links.map((link) => {
           return (
             <li className="nav-item px-2" key={link.name}>
-              <NavLink className="nav-link" to={link.path}>
+              <NavLink
+                className="nav-link"
+                to={link.path}
+                onClick={() => {
+                  if (this.state.width < 992)
+                    this.collapseButtonRef.current.click();
+                }}
+              >
                 {link.name}
               </NavLink>
             </li>
@@ -56,7 +81,7 @@ class Header extends Component {
 
   render() {
     return (
-      <nav className="navbar navbar-expand-lg text-light sticky-top">
+      <nav className="navbar navbar-expand-lg text-light">
         {this.renderLogo()}
         {this.renderToggleButton()}
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
