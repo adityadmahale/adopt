@@ -26,6 +26,18 @@ class Header extends Component {
     { name: "Shop", path: "/shop" },
   ];
   right = [
+    {
+      name: "Cart",
+      path: "/login",
+      content: (cartSize) => (
+        <React.Fragment>
+          <span className="fa fa-shopping-cart fa-lg"></span>
+          <span class="badge badge-warning" id="lblCartCount">
+            {cartSize}
+          </span>
+        </React.Fragment>
+      ),
+    },
     { name: "Login", path: "/login" },
     { name: "Register", path: "/register" },
   ];
@@ -70,7 +82,7 @@ class Header extends Component {
                     this.collapseButtonRef.current.click();
                 }}
               >
-                {link.name}
+                {link.content ? link.content(this.props.cartSize) : link.name}
               </NavLink>
             </li>
           );

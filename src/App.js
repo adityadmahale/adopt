@@ -13,10 +13,11 @@ class App extends Component {
   };
 
   render() {
+    const { cart } = this.state;
     return (
       <div className="App">
-        <Header />
-        <Body onAdd={this.handleAdd} cartItems={this.state.cart} />
+        <Header cartSize={cart.length} />
+        <Body onAdd={this.handleAdd} cartItems={cart} />
         <Footer />
       </div>
     );
