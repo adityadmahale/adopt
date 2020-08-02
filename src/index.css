@@ -73,10 +73,14 @@ footer {
   border: 1px solid #388087;
 }
 
-.item-selected,
-.item-selected:hover {
+.item-selected {
   color: #fff;
   background-color: #388087;
+}
+
+.item-selected:hover {
+  background-color: #6fb3b8;
+  color: #fff;
 }
 
 .search {

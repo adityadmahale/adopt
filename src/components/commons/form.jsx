@@ -50,7 +50,7 @@ class Form extends Component {
     return (
       <button
         type="submit"
-        className="btn btn-primary item-selected"
+        className="btn item-selected"
         onClick={this.onSubmit}
       >
         {label}
