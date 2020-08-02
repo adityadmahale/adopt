@@ -1,11 +1,12 @@
 import React from "react";
 
-const Card = ({ title, description, imagePath }) => {
+const Card = ({ item }) => {
+  const { name, path } = item;
   return (
     <div className="card mt-3">
-      <img className="card-img-top" src={imagePath} alt="Houseplant" />
+      <img className="card-img-top" src={path} alt="Houseplant" />
       <div className="card-body pt-1">
-        <h4 className="card-title">{title}</h4>
+        <h4 className="card-title">{name}</h4>
         <div className="row">
           <div className="col-6 align-self-center">
             <p className="card-text">Details</p>
