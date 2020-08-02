@@ -15,7 +15,7 @@ class Login extends Form {
   };
 
   handleSubmit = () => {
-    console.log("test");
+    console.log("Submitted");
   };
 
   schema = Joi.object({
@@ -29,7 +29,7 @@ class Login extends Form {
 
   render() {
     return (
-      <div className="card">
+      <div className="card w-75 mx-auto">
         <div className="card-body">
           <form>
             {this.renderInput("text", "email", "Email")}

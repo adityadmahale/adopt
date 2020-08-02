@@ -2,21 +2,30 @@ import React, { Component } from "react";
 
 class Form extends Component {
   handleChange = (field, value) => {
+    const error = { ...this.state.error, [field]: "" };
     const body = { ...this.state.body, [field]: value };
-    this.setState({ body });
+    this.setState({ body, error });
   };
 
   onSubmit = (e) => {
     e.preventDefault();
+    const error = this.validate();
+    if (error) return;
     this.handleSubmit();
   };
 
   validate = () => {
-    const { error } = this.schema.validate(this.state.body);
-    return error;
+    const { error: err } = this.schema.validate(this.state.body);
+    if (err) {
+      const result = err.details[0];
+      const error = { ...this.state.error, [result.path[0]]: result.message };
+      this.setState({ error });
+    }
+    return err;
   };
 
   renderInput = (type, field, label) => {
+    const { body, error } = this.state;
     return (
       <div className="form-group">
         <label htmlFor={field}>{label}</label>
@@ -25,9 +34,14 @@ class Form extends Component {
           className="form-control"
           id={field}
           placeholder={label}
-          value={this.state.body[field]}
+          value={body[field]}
           onChange={(e) => this.handleChange(field, e.currentTarget.value)}
         />
+        {error[field] && (
+          <p className="mt-1 p-1" style={{ backgroundColor: "#F6F6F2" }}>
+            {error[field]}
+          </p>
+        )}
       </div>
     );
   };
