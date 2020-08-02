@@ -109,6 +109,10 @@ footer {
   color: #388087;
 }
 
+.cart {
+  width: 100%;
+}
+
 #lblCartCount {
   -webkit-border-radius: 9px;
   -moz-border-radius: 9px;
@@ -122,6 +126,10 @@ footer {
 @media screen and (min-width: 768px) {
   .navbar-brand {
     width: 20%;
+  }
+
+  .cart {
+    width: 50%;
   }
 }
 

@@ -28,11 +28,11 @@ class Header extends Component {
   right = [
     {
       name: "Cart",
-      path: "/login",
+      path: "/cart",
       content: (cartSize) => (
         <React.Fragment>
           <span className="fa fa-shopping-cart fa-lg"></span>
-          <span class="badge badge-warning" id="lblCartCount">
+          <span className="badge badge-warning" id="lblCartCount">
             {cartSize}
           </span>
         </React.Fragment>

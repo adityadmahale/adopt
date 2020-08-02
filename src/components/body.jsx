@@ -5,6 +5,7 @@ import Login from "./login";
 import Register from "./register";
 import Shop from "./shop";
 import NotFound from "./notFound";
+import Cart from "./cart";
 
 class Body extends Component {
   state = {};
@@ -16,6 +17,12 @@ class Body extends Component {
             <Route path="/home" component={Home} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
+            <Route
+              path="/cart"
+              render={(props) => (
+                <Cart {...props} cartItems={this.props.cartItems} />
+              )}
+            />
             <Route
               path="/shop"
               render={(props) => (
