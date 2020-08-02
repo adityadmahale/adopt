@@ -85,7 +85,11 @@ class Shop extends Component {
         <div className="row">
           {filteredPlants.map((plant) => (
             <div className="col-12 col-md-4" key={plant.id}>
-              <Card item={plant} />
+              <Card
+                item={plant}
+                onAdd={this.props.onAdd}
+                cartItems={this.props.cartItems}
+              />
             </div>
           ))}
         </div>

@@ -16,7 +16,16 @@ class Body extends Component {
             <Route path="/home" component={Home} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
-            <Route path="/shop" component={Shop} />
+            <Route
+              path="/shop"
+              render={(props) => (
+                <Shop
+                  {...props}
+                  onAdd={this.props.onAdd}
+                  cartItems={this.props.cartItems}
+                />
+              )}
+            />
             <Route path="/not-found" component={NotFound} />
             <Redirect from="/" exact to="/home" />
             <Redirect to="/not-found" />
