@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { NavLink, Link } from "react-router-dom";
+import CartIcon from "./cartIcon";
 
 class Header extends Component {
   state = {
@@ -21,17 +22,6 @@ class Header extends Component {
     this.setState({ width: window.innerWidth });
   };
 
-  renderCartIcon = (cartSize) => (
-    <React.Fragment>
-      <span className="fa fa-shopping-cart fa-lg"></span>
-      {cartSize > 0 ? (
-        <span className="badge badge-warning" id="lblCartCount">
-          {cartSize}
-        </span>
-      ) : null}
-    </React.Fragment>
-  );
-
   left = [
     { name: "Home", path: "/home" },
     { name: "Shop", path: "/shop" },
@@ -40,7 +30,7 @@ class Header extends Component {
     {
       name: "Cart",
       path: "/cart",
-      content: this.renderCartIcon,
+      content: (cartSize) => <CartIcon cartSize={cartSize} />,
     },
     { name: "Login", path: "/login" },
     { name: "Register", path: "/register" },
@@ -72,18 +62,19 @@ class Header extends Component {
   };
 
   renderNavList = (links, right) => {
+    const { width } = this.state;
     const classes = right ? "navbar-nav ml-auto" : "navbar-nav";
     return (
       <ul className={classes}>
         {links.map((link) => {
+          if (width < 992 && link.content) return null;
           return (
             <li className="nav-item px-2" key={link.name}>
               <NavLink
                 className="nav-link"
                 to={link.path}
                 onClick={() => {
-                  if (this.state.width < 992)
-                    this.collapseButtonRef.current.click();
+                  if (width < 992) this.collapseButtonRef.current.click();
                 }}
               >
                 {link.content ? link.content(this.props.cartSize) : link.name}
