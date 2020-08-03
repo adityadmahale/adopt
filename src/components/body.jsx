@@ -21,7 +21,9 @@ class Body extends Component {
             <Route path="/register" component={Register} />
             <Route
               path="/cart"
-              render={(props) => <Cart {...props} cartItems={cartItems} />}
+              render={(props) => (
+                <Cart {...props} cartItems={cartItems} onRemove={onRemove} />
+              )}
             />
             <Route
               path="/shop"
