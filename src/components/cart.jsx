@@ -17,17 +17,17 @@ class Cart extends Component {
       <table className="table">
         <thead>
           <tr>
-            <th />
-            <th>Name</th>
-            <th>Type</th>
-            <th />
+            <th className="d-none d-xl-block border-0"></th>
+            <th className="border-0">Name</th>
+            <th className="border-0">Type</th>
+            <th className="border-0" />
           </tr>
         </thead>
         <tbody>
           {cartItems.map((item) => {
             return (
               <tr key={item._id}>
-                <td>
+                <td className="d-none d-xl-block">
                   <div className="border-0">
                     <img
                       src={item.path}
@@ -66,7 +66,7 @@ class Cart extends Component {
 
     return (
       <div className="mx-auto card p-3 cart">
-        <h4 className="mb-3">
+        <h4>
           Cart{" "}
           <span className="badge badge-pill badge-warning">{cartSize}</span>
         </h4>
