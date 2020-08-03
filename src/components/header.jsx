@@ -21,6 +21,17 @@ class Header extends Component {
     this.setState({ width: window.innerWidth });
   };
 
+  renderCartIcon = (cartSize) => (
+    <React.Fragment>
+      <span className="fa fa-shopping-cart fa-lg"></span>
+      {cartSize > 0 ? (
+        <span className="badge badge-warning" id="lblCartCount">
+          {cartSize}
+        </span>
+      ) : null}
+    </React.Fragment>
+  );
+
   left = [
     { name: "Home", path: "/home" },
     { name: "Shop", path: "/shop" },
@@ -29,14 +40,7 @@ class Header extends Component {
     {
       name: "Cart",
       path: "/cart",
-      content: (cartSize) => (
-        <React.Fragment>
-          <span className="fa fa-shopping-cart fa-lg"></span>
-          <span className="badge badge-warning" id="lblCartCount">
-            {cartSize}
-          </span>
-        </React.Fragment>
-      ),
+      content: this.renderCartIcon,
     },
     { name: "Login", path: "/login" },
     { name: "Register", path: "/register" },

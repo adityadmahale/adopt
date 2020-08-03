@@ -10,6 +10,8 @@ import Cart from "./cart";
 class Body extends Component {
   state = {};
   render() {
+    const { cartItems, onAdd, onRemove } = this.props;
+
     return (
       <section>
         <main className="container pt-4">
@@ -19,17 +21,16 @@ class Body extends Component {
             <Route path="/register" component={Register} />
             <Route
               path="/cart"
-              render={(props) => (
-                <Cart {...props} cartItems={this.props.cartItems} />
-              )}
+              render={(props) => <Cart {...props} cartItems={cartItems} />}
             />
             <Route
               path="/shop"
               render={(props) => (
                 <Shop
                   {...props}
-                  onAdd={this.props.onAdd}
-                  cartItems={this.props.cartItems}
+                  onAdd={onAdd}
+                  onRemove={onRemove}
+                  cartItems={cartItems}
                 />
               )}
             />

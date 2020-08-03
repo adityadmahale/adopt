@@ -2,11 +2,22 @@ import React, { Component } from "react";
 
 class Card extends Component {
   renderButton = () => {
-    const { item, onAdd, cartItems } = this.props;
+    const { item, onAdd, onRemove, cartItems } = this.props;
+
+    // const found = cartItems.find((plant) => plant._id === item._id);
+    // if (found)
+    //   return (
+    //     <span className="fa fa-check-circle-o fa-lg text-green align-self-center"></span>
+    //   );
+
     const found = cartItems.find((plant) => plant._id === item._id);
     if (found)
       return (
-        <span className="fa fa-check-circle-o fa-lg text-green align-self-center"></span>
+        <span
+          className="fa fa-trash fa-lg text-green align-self-center"
+          style={{ cursor: "pointer" }}
+          onClick={() => onRemove(item)}
+        ></span>
       );
 
     return (
