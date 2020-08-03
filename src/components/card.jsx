@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class Card extends Component {
   renderButton = () => {
     const { item, onAdd, cartItems } = this.props;
-    const found = cartItems.find((plant) => plant.id === item.id);
+    const found = cartItems.find((plant) => plant._id === item._id);
     if (found)
       return (
         <span className="fa fa-check-circle-o fa-lg text-green align-self-center"></span>

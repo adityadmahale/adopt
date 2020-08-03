@@ -19,7 +19,7 @@ class Shop extends Component {
 
   componentDidMount() {
     this.setState({ plants: plantsList });
-    this.setState({ categories: [{ id: 0, name: "All" }, ...categories] });
+    this.setState({ categories: [{ _id: 0, name: "All" }, ...categories] });
   }
 
   handleSelect = (category) => {
@@ -84,7 +84,7 @@ class Shop extends Component {
 
         <div className="row">
           {filteredPlants.map((plant) => (
-            <div className="col-12 col-md-4" key={plant.id}>
+            <div className="col-12 col-md-4" key={plant._id}>
               <Card
                 item={plant}
                 onAdd={this.props.onAdd}

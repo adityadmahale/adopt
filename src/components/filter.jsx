@@ -11,7 +11,7 @@ const Filter = ({ onSelect, selected, items }) => {
             selected === item.name ? classes + " item-selected" : classes
           }
           onClick={() => onSelect(item.name)}
-          key={item.id}
+          key={item._id}
         >
           {item.name}
         </span>

@@ -8,7 +8,7 @@ const Cart = ({ cartItems }) => {
       <h4>Cart</h4>
       {cartItems.map((item) => {
         return (
-          <div className="card flex-row flex-wrap mb-2" key={item.id}>
+          <div className="card flex-row flex-wrap mb-2" key={item._id}>
             <div className="card-header border-0 w-25">
               <img src={item.path} alt={item.name} className="w-100" />
             </div>
