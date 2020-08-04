@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class Card extends Component {
   renderButton = () => {
-    const { item, onAdd, onRemove, cartItems } = this.props;
+    const { item, onAdd, onRemove, cartItems, user } = this.props;
 
     // const found = cartItems.find((plant) => plant._id === item._id);
     // if (found)
@@ -21,7 +21,13 @@ class Card extends Component {
       );
 
     return (
-      <button className="btn item-selected px-4" onClick={() => onAdd(item)}>
+      <button
+        className="btn item-selected px-4"
+        onClick={() => {
+          if (!user) return this.props.history.push("/login");
+          onAdd(item);
+        }}
+      >
         Add
       </button>
     );

@@ -10,7 +10,7 @@ import Cart from "./cart";
 class Body extends Component {
   state = {};
   render() {
-    const { cartItems, onAdd, onRemove } = this.props;
+    const { cartItems, onAdd, onRemove, user } = this.props;
 
     return (
       <section>
@@ -33,6 +33,7 @@ class Body extends Component {
                   onAdd={onAdd}
                   onRemove={onRemove}
                   cartItems={cartItems}
+                  user={user}
                 />
               )}
             />

@@ -6,7 +6,13 @@ import Footer from "./components/footer";
 class App extends Component {
   state = {
     cart: [],
+    user: null,
   };
+
+  componentDidMount() {
+    const user = { username: "Aditya" };
+    this.setState({ user });
+  }
 
   handleAdd = (plant) => {
     this.setState({ cart: [...this.state.cart, plant] });
@@ -18,14 +24,15 @@ class App extends Component {
   };
 
   render() {
-    const { cart } = this.state;
+    const { cart, user } = this.state;
     return (
       <div className="App">
-        <Header cartSize={cart.length} />
+        <Header cartSize={cart.length} user={user} />
         <Body
           onAdd={this.handleAdd}
           cartItems={cart}
           onRemove={this.handleRemove}
+          user={user}
         />
         <Footer />
       </div>
