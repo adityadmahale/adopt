@@ -86,10 +86,22 @@ class Header extends Component {
     );
   };
 
+  renderCartIcon = () => {
+    const { width } = this.state;
+    if (width > 991) return null;
+
+    return (
+      <Link className="nav-link ml-auto" to="/cart">
+        <CartIcon cartSize={this.props.cartSize} />
+      </Link>
+    );
+  };
+
   render() {
     return (
       <nav className="navbar navbar-expand-lg text-light">
         {this.renderLogo()}
+        {this.renderCartIcon()}
         {this.renderToggleButton()}
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           {this.renderNavList(this.left)}
