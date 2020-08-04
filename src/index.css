@@ -91,7 +91,7 @@ footer {
 
 .card {
   border: 1px solid #badfe7;
-  box-shadow: 5px 5px 5px #f6f6f2;
+  box-shadow: 10px 5px 5px #f6f6f2;
 }
 
 .card-img-top {

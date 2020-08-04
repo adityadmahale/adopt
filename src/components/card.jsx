@@ -36,7 +36,13 @@ class Card extends Component {
           <h4 className="card-title">{name}</h4>
           <div className="row">
             <div className="col-6 align-self-center">
-              <p className="card-text py-2">Details</p>
+              <p className="card-text py-2">
+                <span
+                  className="fa fa-info-circle fa-lg text-green"
+                  style={{ cursor: "pointer" }}
+                  aria-hidden="true"
+                ></span>
+              </p>
             </div>
             <div className="col-6 d-flex justify-content-center">
               {this.renderButton()}
