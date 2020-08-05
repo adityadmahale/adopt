@@ -6,6 +6,7 @@ import Card from "./card";
 import plantsList from "../services/shopService";
 import categories from "../services/categoryService";
 import { paginate } from "../utils/paginate";
+import "../sidenav.css";
 
 class Shop extends Component {
   state = {
@@ -15,6 +16,7 @@ class Shop extends Component {
     pageSize: 6,
     plants: [],
     categories: [],
+    selectedPlant: null,
   };
 
   componentDidMount() {
@@ -56,6 +58,30 @@ class Shop extends Component {
     };
   };
 
+  navRef = React.createRef();
+
+  openNav = () => {
+    this.navRef.current.style.width = "100%";
+  };
+
+  closeNav = () => {
+    this.navRef.current.style.width = "0";
+  };
+
+  renderSideNav = () => {
+    return (
+      <div ref={this.navRef} className="sidenav">
+        <div className="sidenav-content">
+          <span
+            className="fa fa-times closebtn"
+            onClick={() => this.closeNav()}
+          ></span>
+          {this.state.selectedPlant && <h3>{this.state.selectedPlant.name}</h3>}
+        </div>
+      </div>
+    );
+  };
+
   render() {
     const {
       categories: allCategories,
@@ -69,6 +95,7 @@ class Shop extends Component {
 
     return (
       <React.Fragment>
+        {this.renderSideNav()}
         <div className="row">
           <div className="col-12 col-md-7">
             <Filter
@@ -91,6 +118,10 @@ class Shop extends Component {
                 onAdd={onAdd}
                 cartItems={cartItems}
                 user={user}
+                onClick={() => {
+                  this.setState({ selectedPlant: { ...plant } });
+                  this.openNav();
+                }}
               />
             </div>
           ))}

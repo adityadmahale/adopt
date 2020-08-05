@@ -1,0 +1,36 @@
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  right: 0;
+  background-color: rgba(246, 246, 242, 0.5);
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  margin-left: 50px;
+  cursor: pointer;
+  font-size: 25px;
+}
+
+.sidenav-content {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  background-color: #badfe7;
+  height: 100%;
+}
+
+@media screen and (min-width: 992px) {
+  .sidenav-content {
+    width: 25%;
+  }
+}

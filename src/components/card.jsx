@@ -43,6 +43,7 @@ class Card extends Component {
                   className="fa fa-info-circle fa-lg text-green"
                   style={{ cursor: "pointer" }}
                   aria-hidden="true"
+                  onClick={() => this.props.onClick()}
                 ></span>
               </p>
             </div>
