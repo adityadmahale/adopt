@@ -6,6 +6,7 @@ import Register from "./register";
 import Shop from "./shop";
 import NotFound from "./notFound";
 import Cart from "./cart";
+import Logout from "./logout";
 
 class Body extends Component {
   state = {};
@@ -18,6 +19,7 @@ class Body extends Component {
           <Switch>
             <Route path="/home" component={Home} />
             <Route path="/login" component={Login} />
+            <Route path="/logout" component={Logout} />
             <Route path="/register" component={Register} />
             <Route
               path="/cart"
