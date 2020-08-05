@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class Card extends Component {
   renderButton = () => {
-    const { item, onAdd, onRemove, cartItems, user } = this.props;
+    const { item, onAdd, cartItems, user } = this.props;
 
     // const found = cartItems.find((plant) => plant._id === item._id);
     // if (found)
@@ -13,11 +13,7 @@ class Card extends Component {
     const found = cartItems.find((plant) => plant._id === item._id);
     if (found)
       return (
-        <span
-          className="fa fa-trash fa-lg text-green align-self-center"
-          style={{ cursor: "pointer" }}
-          onClick={() => onRemove(item)}
-        ></span>
+        <span className="fa fa-check fa-lg text-green align-self-center"></span>
       );
 
     return (

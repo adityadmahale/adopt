@@ -64,7 +64,7 @@ class Shop extends Component {
       pageNumber,
       pageSize,
     } = this.state;
-    const { onAdd, onRemove, cartItems, user } = this.props;
+    const { onAdd, cartItems, user } = this.props;
     const { filteredPlants, itemLength } = this.getPagedData();
 
     return (
@@ -89,7 +89,6 @@ class Shop extends Component {
                 {...this.props}
                 item={plant}
                 onAdd={onAdd}
-                onRemove={onRemove}
                 cartItems={cartItems}
                 user={user}
               />

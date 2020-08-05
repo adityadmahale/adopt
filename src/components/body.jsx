@@ -35,7 +35,6 @@ class Body extends Component {
                 <Shop
                   {...props}
                   onAdd={onAdd}
-                  onRemove={onRemove}
                   cartItems={cartItems}
                   user={user}
                 />

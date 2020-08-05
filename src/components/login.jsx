@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Form from "./commons/form";
 import Joi from "joi";
 
@@ -37,6 +38,12 @@ class Login extends Form {
             {this.renderInput("password", "password", "Password")}
             {this.renderButton("Login")}
           </form>
+          <p className="mt-3">
+            Not registered?{" "}
+            <Link to="/register" className="text-green">
+              Create an account
+            </Link>
+          </p>
         </div>
       </div>
     );
