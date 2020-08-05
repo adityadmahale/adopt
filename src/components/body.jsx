@@ -7,6 +7,7 @@ import Shop from "./shop";
 import NotFound from "./notFound";
 import Cart from "./cart";
 import Logout from "./logout";
+import UserDetails from "./userDetails";
 
 class Body extends Component {
   state = {};
@@ -20,6 +21,7 @@ class Body extends Component {
             <Route path="/home" component={Home} />
             <Route path="/login" component={Login} />
             <Route path="/logout" component={Logout} />
+            <Route path="/user" component={UserDetails} />
             <Route path="/register" component={Register} />
             <Route
               path="/cart"

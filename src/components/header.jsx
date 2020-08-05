@@ -22,20 +22,6 @@ class Header extends Component {
     this.setState({ width: window.innerWidth });
   };
 
-  left = [
-    { name: "Home", path: "/home" },
-    { name: "Shop", path: "/shop" },
-  ];
-  right = [
-    {
-      name: "Cart",
-      path: "/cart",
-      content: (cartSize) => <CartIcon cartSize={cartSize} />,
-    },
-    { name: "Login", path: "/login" },
-    { name: "Register", path: "/register" },
-  ];
-
   renderLogo = () => {
     return (
       <Link className="navbar-brand" to="/">
@@ -88,7 +74,7 @@ class Header extends Component {
 
   renderCartIcon = () => {
     const { width } = this.state;
-    if (width > 991) return null;
+    if (width > 991 || !this.props.user) return null;
 
     return (
       <Link className="nav-link ml-auto" to="/cart">
@@ -97,15 +83,41 @@ class Header extends Component {
     );
   };
 
+  generateNavLinks = () => {
+    const { user } = this.props;
+    const left = [
+      { name: "Home", path: "/home" },
+      { name: "Shop", path: "/shop" },
+    ];
+    let right = null;
+    if (user)
+      right = [
+        {
+          name: "Cart",
+          path: "/cart",
+          content: (cartSize) => <CartIcon cartSize={cartSize} />,
+        },
+        { name: "Logout", path: "/logout" },
+        { name: user.username, path: "/user" },
+      ];
+    else
+      right = [
+        { name: "Login", path: "/login" },
+        { name: "Register", path: "/register" },
+      ];
+    return { left, right };
+  };
+
   render() {
+    const { left, right } = this.generateNavLinks();
     return (
       <nav className="navbar navbar-expand-lg text-light">
         {this.renderLogo()}
         {this.renderCartIcon()}
         {this.renderToggleButton()}
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          {this.renderNavList(this.left)}
-          {this.renderNavList(this.right, true)}
+          {this.renderNavList(left)}
+          {this.renderNavList(right, true)}
         </div>
       </nav>
     );
