@@ -34,6 +34,7 @@ class Register extends Form {
     return (
       <div className="card w-75 mx-auto">
         <div className="card-body">
+          <h3 className="mb-4">Register</h3>
           <form>
             {this.renderInput("text", "username", "Username")}
             {this.renderInput("text", "email", "Email")}

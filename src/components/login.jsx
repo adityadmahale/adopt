@@ -31,6 +31,7 @@ class Login extends Form {
     return (
       <div className="card w-75 mx-auto">
         <div className="card-body">
+          <h3 className="mb-4">Login</h3>
           <form>
             {this.renderInput("text", "email", "Email")}
             {this.renderInput("password", "password", "Password")}
