@@ -17,7 +17,12 @@
   right: 25px;
   margin-left: 50px;
   cursor: pointer;
-  font-size: 25px;
+  font-size: 30px;
+  color: #818181;
+}
+
+.sidenav .closebtn:hover {
+  color: #f1f1f1;
 }
 
 .sidenav-content {
