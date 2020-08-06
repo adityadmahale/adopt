@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import Form from "./commons/form";
 import Joi from "joi";
 
@@ -29,6 +29,8 @@ class Login extends Form {
   });
 
   render() {
+    if (this.props.user) return <Redirect to="/" />;
+
     return (
       <div className="card w-75 mx-auto">
         <div className="card-body">

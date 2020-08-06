@@ -1,5 +1,6 @@
 import React from "react";
 import Form from "./commons/form";
+import { Redirect } from "react-router-dom";
 import Joi from "joi";
 
 class Register extends Form {
@@ -31,6 +32,8 @@ class Register extends Form {
   });
 
   render() {
+    if (this.props.user) return <Redirect to="/" />;
+
     return (
       <div className="card w-75 mx-auto">
         <div className="card-body">

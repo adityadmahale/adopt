@@ -19,19 +19,6 @@ class Body extends Component {
         <main className="container pt-4">
           <Switch>
             <Route path="/home" component={Home} />
-            <Route path="/login" component={Login} />
-            <Route path="/logout" component={Logout} />
-            <Route
-              path="/user"
-              render={(props) => <UserDetails {...props} user={user} />}
-            />
-            <Route path="/register" component={Register} />
-            <Route
-              path="/cart"
-              render={(props) => (
-                <Cart {...props} cartItems={cartItems} onRemove={onRemove} />
-              )}
-            />
             <Route
               path="/shop"
               render={(props) => (
@@ -42,6 +29,25 @@ class Body extends Component {
                   user={user}
                 />
               )}
+            />
+            <Route
+              path="/login"
+              render={(props) => <Login {...props} user={user} />}
+            />
+            <Route
+              path="/register"
+              render={(props) => <Register {...props} user={user} />}
+            />
+            <Route
+              path="/cart"
+              render={(props) => (
+                <Cart {...props} cartItems={cartItems} onRemove={onRemove} />
+              )}
+            />
+            <Route path="/logout" component={Logout} />
+            <Route
+              path="/user"
+              render={(props) => <UserDetails {...props} user={user} />}
             />
             <Route path="/not-found" component={NotFound} />
             <Redirect from="/" exact to="/home" />
