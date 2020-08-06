@@ -69,6 +69,7 @@ class Shop extends Component {
   };
 
   renderSideNav = () => {
+    const { selectedPlant } = this.state;
     return (
       <div ref={this.navRef} className="sidenav">
         <div className="sidenav-content">
@@ -76,7 +77,11 @@ class Shop extends Component {
             className="fa fa-times closebtn"
             onClick={() => this.closeNav()}
           ></span>
-          {this.state.selectedPlant && <h3>{this.state.selectedPlant.name}</h3>}
+          {selectedPlant && (
+            <React.Fragment>
+              <h3 className="p-3">{selectedPlant.name}</h3>
+            </React.Fragment>
+          )}
         </div>
       </div>
     );

@@ -21,7 +21,10 @@ class Body extends Component {
             <Route path="/home" component={Home} />
             <Route path="/login" component={Login} />
             <Route path="/logout" component={Logout} />
-            <Route path="/user" component={UserDetails} />
+            <Route
+              path="/user"
+              render={(props) => <UserDetails {...props} user={user} />}
+            />
             <Route path="/register" component={Register} />
             <Route
               path="/cart"

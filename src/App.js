@@ -10,7 +10,7 @@ class App extends Component {
   };
 
   componentDidMount() {
-    const user = { username: "Aditya" };
+    const user = { username: "Aditya", email: "test@gmail.com" };
     this.setState({ user });
   }
 

@@ -1,7 +1,12 @@
 import React from "react";
 
-const UserDetails = () => {
-  return <h1>Test</h1>;
+const UserDetails = ({ user }) => {
+  return user ? (
+    <React.Fragment>
+      <h1>{user.username}</h1>
+      <p>{user.email}</p>
+    </React.Fragment>
+  ) : null;
 };
 
 export default UserDetails;
