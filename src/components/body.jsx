@@ -8,6 +8,7 @@ import NotFound from "./notFound";
 import Cart from "./cart";
 import Logout from "./logout";
 import UserDetails from "./userDetails";
+import ProtectedRoute from "./commons/protectedRoute";
 
 class Body extends Component {
   state = {};
@@ -38,14 +39,16 @@ class Body extends Component {
               path="/register"
               render={(props) => <Register {...props} user={user} />}
             />
-            <Route
+            <ProtectedRoute
+              user={user}
               path="/cart"
               render={(props) => (
                 <Cart {...props} cartItems={cartItems} onRemove={onRemove} />
               )}
             />
-            <Route path="/logout" component={Logout} />
-            <Route
+            <ProtectedRoute path="/logout" component={Logout} user={user} />
+            <ProtectedRoute
+              user={user}
               path="/user"
               render={(props) => <UserDetails {...props} user={user} />}
             />
