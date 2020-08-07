@@ -81,7 +81,11 @@ class Shop extends Component {
             <React.Fragment>
               <h3 className="p-3">{selectedPlant.name}</h3>
               <div className="px-5 py-3">
-                <img src={selectedPlant.path} alt={selectedPlant.name} />
+                <img
+                  className="rounded d-block mx-auto"
+                  src={selectedPlant.path}
+                  alt={selectedPlant.name}
+                />
               </div>
             </React.Fragment>
           )}

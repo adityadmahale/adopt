@@ -30,6 +30,7 @@ class Cart extends Component {
                 <td className="d-none d-xl-block">
                   <div className="border-0">
                     <img
+                      className="rounded"
                       src={item.path}
                       alt={item.name}
                       style={{ width: 256, height: 183 }}
