@@ -114,6 +114,10 @@ footer {
   width: 100%;
 }
 
+.badge-warning {
+  background-color: #ffd200;
+}
+
 #lblCartCount {
   -webkit-border-radius: 9px;
   -moz-border-radius: 9px;
