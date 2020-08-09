@@ -10,7 +10,7 @@ import "../sidenav.css";
 
 class Shop extends Component {
   state = {
-    category: "All",
+    categoryId: "0",
     searchString: "",
     pageNumber: 1,
     pageSize: 6,
@@ -20,16 +20,18 @@ class Shop extends Component {
   };
 
   componentDidMount() {
-    this.setState({ plants: plantsList });
-    this.setState({ categories: [{ _id: 0, name: "All" }, ...categories] });
+    this.setState({
+      categories: [{ _id: "0", name: "All" }, ...categories],
+      plants: plantsList,
+    });
   }
 
-  handleSelect = (category) => {
-    this.setState({ category, pageNumber: 1, searchString: "" });
+  handleSelect = (categoryId) => {
+    this.setState({ categoryId, pageNumber: 1, searchString: "" });
   };
 
   handleSearch = (searchString) => {
-    this.setState({ searchString, pageNumber: 1, category: "All" });
+    this.setState({ searchString, pageNumber: 1, categoryId: "0" });
   };
 
   handlePageChange = (pageNumber) => {
@@ -38,7 +40,7 @@ class Shop extends Component {
 
   getPagedData = () => {
     const {
-      category,
+      categoryId,
       searchString,
       pageNumber,
       pageSize,
@@ -46,8 +48,8 @@ class Shop extends Component {
     } = this.state;
 
     const filtered =
-      category !== "All"
-        ? allPlants.filter((plant) => plant.category === category)
+      categoryId !== "0"
+        ? allPlants.filter((plant) => plant.category._id === categoryId)
         : allPlants;
     const searched = filtered.filter((plant) =>
       plant.name.toLowerCase().startsWith(searchString.toLowerCase())
@@ -97,7 +99,7 @@ class Shop extends Component {
   render() {
     const {
       categories: allCategories,
-      category,
+      categoryId,
       searchString,
       pageNumber,
       pageSize,
@@ -112,7 +114,7 @@ class Shop extends Component {
           <div className="col-12 col-md-7">
             <Filter
               onSelect={this.handleSelect}
-              selected={category}
+              selected={categoryId}
               items={allCategories}
             />
           </div>

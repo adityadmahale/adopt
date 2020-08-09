@@ -8,9 +8,9 @@ const Filter = ({ onSelect, selected, items }) => {
       {items.map((item) => (
         <span
           className={
-            selected === item.name ? classes + " item-selected" : classes
+            selected === item._id ? classes + " item-selected" : classes
           }
-          onClick={() => onSelect(item.name)}
+          onClick={() => onSelect(item._id)}
           key={item._id}
         >
           {item.name}
