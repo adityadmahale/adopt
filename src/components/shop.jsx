@@ -29,7 +29,7 @@ class Shop extends Component {
   };
 
   handleSearch = (searchString) => {
-    this.setState({ searchString, pageNumber: 1 });
+    this.setState({ searchString, pageNumber: 1, category: "All" });
   };
 
   handlePageChange = (pageNumber) => {

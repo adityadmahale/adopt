@@ -26,7 +26,7 @@ const Home = () => {
           Aldus PageMaker including versions of Lorem Ipsum.
         </p>
         <Link className="btn item-selected px-4" to="/shop">
-          Adopt
+          Proceed
         </Link>
       </div>
     </div>

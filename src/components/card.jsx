@@ -11,10 +11,6 @@ class Card extends Component {
     //   );
 
     const found = cartItems.find((plant) => plant._id === item._id);
-    if (found)
-      return (
-        <span className="fa fa-check fa-lg text-green align-self-center"></span>
-      );
 
     return (
       <button
@@ -23,8 +19,9 @@ class Card extends Component {
           if (!user) return this.props.history.push("/login");
           onAdd(item);
         }}
+        disabled={found}
       >
-        Add
+        {found ? "Added" : "Add"}
       </button>
     );
   };

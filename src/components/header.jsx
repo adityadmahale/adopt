@@ -53,7 +53,7 @@ class Header extends Component {
     return (
       <ul className={classes}>
         {links.map((link) => {
-          if (width < 992 && link.content) return null;
+          if (width < 992 && link.name === "Cart") return null;
           return (
             <li className="nav-item px-2" key={link.name}>
               <NavLink
@@ -63,7 +63,7 @@ class Header extends Component {
                   if (width < 992) this.collapseButtonRef.current.click();
                 }}
               >
-                {link.content ? link.content(this.props.cartSize) : link.name}
+                {link.content ? link.content : link.name}
               </NavLink>
             </li>
           );
@@ -84,7 +84,7 @@ class Header extends Component {
   };
 
   generateNavLinks = () => {
-    const { user } = this.props;
+    const { user, cartSize } = this.props;
     const left = [
       { name: "Home", path: "/home" },
       { name: "Shop", path: "/shop" },
@@ -95,15 +95,47 @@ class Header extends Component {
         {
           name: "Cart",
           path: "/cart",
-          content: (cartSize) => <CartIcon cartSize={cartSize} />,
+          content: <CartIcon cartSize={cartSize} />,
         },
-        { name: "Logout", path: "/logout" },
-        { name: user.username, path: "/user" },
+        {
+          name: "Logout",
+          path: "/logout",
+          content: (
+            <React.Fragment>
+              <span className="fa fa-sign-out fa-lg"></span> Logout
+            </React.Fragment>
+          ),
+        },
+        {
+          name: user.username,
+          path: "/user",
+          content: (
+            <React.Fragment>
+              <span className="fa fa-user fa-lg"></span> {user.username}
+            </React.Fragment>
+          ),
+        },
       ];
     else
       right = [
-        { name: "Login", path: "/login" },
-        { name: "Register", path: "/register" },
+        {
+          name: "Login",
+          path: "/login",
+          content: (
+            <React.Fragment>
+              <span className="fa fa-sign-in fa-lg"></span> Login
+            </React.Fragment>
+          ),
+        },
+        {
+          name: "Register",
+          path: "/register",
+          content: (
+            <React.Fragment>
+              <span className="fa fa-user-plus fa-lg"></span> Register
+            </React.Fragment>
+          ),
+        },
       ];
     return { left, right };
   };

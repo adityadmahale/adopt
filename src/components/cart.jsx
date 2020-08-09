@@ -67,10 +67,19 @@ class Cart extends Component {
 
     return (
       <div className="mx-auto card p-3 cart">
-        <h4>
-          Cart{" "}
-          <span className="badge badge-pill badge-warning">{cartSize}</span>
-        </h4>
+        <div className="row">
+          <div className="col-8">
+            <h4>
+              Cart{" "}
+              <span className="badge badge-pill badge-warning">{cartSize}</span>
+            </h4>
+          </div>
+          <div className="col-4">
+            <button className="btn item-selected px-4 float-right">
+              Adopt
+            </button>
+          </div>
+        </div>
         {this.renderTable(cartItems)}
         <Pagination
           pageSize={pageSize}
