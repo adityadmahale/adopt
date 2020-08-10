@@ -38,7 +38,7 @@ class Cart extends Component {
                   </div>
                 </td>
                 <td>{item.name}</td>
-                <td>{item.category}</td>
+                <td>{item.category.name}</td>
                 <td>
                   <span
                     className="fa fa-trash fa-lg text-green align-self-center"

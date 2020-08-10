@@ -3,8 +3,8 @@ import Filter from "./filter";
 import Search from "./search";
 import Pagination from "./pagination";
 import Card from "./card";
-import plantsList from "../services/shopService";
-import categories from "../services/categoryService";
+import { getPlants } from "../services/shopService";
+import { getCategories } from "../services/categoryService";
 import { paginate } from "../utils/paginate";
 import "../sidenav.css";
 
@@ -19,12 +19,14 @@ class Shop extends Component {
     selectedPlant: null,
   };
 
-  componentDidMount() {
+  componentDidMount = async () => {
+    const { data: categories } = await getCategories();
+    const { data: plants } = await getPlants();
     this.setState({
       categories: [{ _id: "0", name: "All" }, ...categories],
-      plants: plantsList,
+      plants: plants,
     });
-  }
+  };
 
   handleSelect = (categoryId) => {
     this.setState({ categoryId, pageNumber: 1, searchString: "" });
