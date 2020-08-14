@@ -1,8 +1,8 @@
-const axios = require("axios");
-const { apiUrl } = require("../config.json");
+import http from "./httpService";
+import { apiUrl } from "../config.json";
 
 const url = apiUrl + "/categories";
 
-module.exports.getCategories = function () {
-  return axios.get(url);
+export const getCategories = function () {
+  return http.get(url);
 };

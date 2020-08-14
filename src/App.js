@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { ToastContainer } from "react-toastify";
 import Header from "./components/header";
 import Body from "./components/body";
 import Footer from "./components/footer";
@@ -26,7 +27,8 @@ class App extends Component {
   render() {
     const { cart, user } = this.state;
     return (
-      <div className="App">
+      <React.Fragment>
+        <ToastContainer />
         <Header cartSize={cart.length} user={user} />
         <Body
           onAdd={this.handleAdd}
@@ -35,7 +37,7 @@ class App extends Component {
           user={user}
         />
         <Footer />
-      </div>
+      </React.Fragment>
     );
   }
 }
