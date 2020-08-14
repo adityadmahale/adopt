@@ -1,5 +1,7 @@
 import React from "react";
 import Form from "./commons/form";
+import auth from "../services/authService";
+import { register } from "../services/userService";
 import { Redirect } from "react-router-dom";
 import Joi from "joi";
 
@@ -17,8 +19,18 @@ class Register extends Form {
     },
   };
 
-  handleSubmit = () => {
-    console.log("Submitted");
+  handleSubmit = async () => {
+    try {
+      const { headers } = await register(this.state.body);
+      auth.loginWithJwt(headers["x-auth-token"]);
+      window.location = "/";
+    } catch (ex) {
+      if (ex.response && ex.response.status === 400) {
+        const error = { ...this.state.error };
+        error.email = ex.response.data;
+        this.setState({ error });
+      }
+    }
   };
 
   schema = Joi.object({

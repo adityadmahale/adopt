@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, Redirect } from "react-router-dom";
+import auth from "../services/authService";
 import Form from "./commons/form";
 import Joi from "joi";
 
@@ -15,8 +16,18 @@ class Login extends Form {
     },
   };
 
-  handleSubmit = () => {
-    console.log("Submitted");
+  handleSubmit = async () => {
+    try {
+      const { email, password } = this.state.body;
+      await auth.login(email, password);
+      window.location = "/";
+    } catch (ex) {
+      if (ex.response && ex.response.status === 400) {
+        const error = this.state.error;
+        error.email = ex.response.data;
+        this.setState({ error });
+      }
+    }
   };
 
   schema = Joi.object({

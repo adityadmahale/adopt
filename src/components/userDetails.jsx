@@ -4,7 +4,6 @@ const UserDetails = ({ user }) => {
   return user ? (
     <React.Fragment>
       <h1>{user.username}</h1>
-      <p>{user.email}</p>
     </React.Fragment>
   ) : null;
 };

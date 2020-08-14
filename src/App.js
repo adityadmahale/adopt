@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Header from "./components/header";
 import Body from "./components/body";
 import Footer from "./components/footer";
+import auth from "./services/authService";
 
 class App extends Component {
   state = {
@@ -11,7 +13,7 @@ class App extends Component {
   };
 
   componentDidMount() {
-    const user = { username: "Aditya", email: "test@gmail.com" };
+    const user = auth.getCurrentUser();
     this.setState({ user });
   }
 
