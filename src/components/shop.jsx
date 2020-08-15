@@ -5,6 +5,7 @@ import Pagination from "./pagination";
 import Card from "./card";
 import { getPlants } from "../services/shopService";
 import { getCategories } from "../services/categoryService";
+import { getCarts } from "../services/cartService";
 import { paginate } from "../utils/paginate";
 import "../sidenav.css";
 
@@ -16,15 +17,26 @@ class Shop extends Component {
     pageSize: 6,
     plants: [],
     categories: [],
+    adoptedPlants: [],
     selectedPlant: null,
   };
 
   componentDidMount = async () => {
     const { data: categories } = await getCategories();
     const { data: plants } = await getPlants();
+
+    let adoptedPlants = [];
+    if (this.props.user) {
+      const { data: carts } = await getCarts();
+      for (const cart of carts) {
+        adoptedPlants = adoptedPlants.concat(cart.plants);
+      }
+    }
+
     this.setState({
       categories: [{ _id: "0", name: "All" }, ...categories],
-      plants: plants,
+      plants,
+      adoptedPlants,
     });
   };
 
@@ -134,6 +146,7 @@ class Shop extends Component {
                 onAdd={onAdd}
                 cartItems={cartItems}
                 user={user}
+                adopted={this.state.adoptedPlants.some((p) => p === plant.name)}
                 onClick={() => {
                   this.setState({ selectedPlant: { ...plant } });
                   this.openNav();

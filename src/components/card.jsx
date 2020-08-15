@@ -2,13 +2,14 @@ import React, { Component } from "react";
 
 class Card extends Component {
   renderButton = () => {
-    const { item, onAdd, cartItems, user } = this.props;
+    const { item, onAdd, cartItems, user, adopted } = this.props;
 
-    // const found = cartItems.find((plant) => plant._id === item._id);
-    // if (found)
-    //   return (
-    //     <span className="fa fa-check-circle-o fa-lg text-green align-self-center"></span>
-    //   );
+    if (adopted)
+      return (
+        <div className="text-green align-self-center">
+          <span className="fa fa-check-circle-o fa-lg"></span> Adopted
+        </div>
+      );
 
     const found = cartItems.find((plant) => plant._id === item._id);
 
