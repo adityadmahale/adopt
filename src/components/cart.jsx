@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Pagination from "./pagination";
 import { paginate } from "../utils/paginate";
+import { postCart } from "../services/cartService";
+import { toast } from "react-toastify";
 
 class Cart extends Component {
   state = {
@@ -10,6 +12,18 @@ class Cart extends Component {
 
   handlePageChange = (pageNumber) => {
     this.setState({ pageNumber });
+  };
+
+  handleSubmit = async () => {
+    try {
+      const plants = this.props.cartItems.map((plant) => plant.name);
+      await postCart(plants);
+      window.location = "/";
+    } catch (ex) {
+      if (ex.response && ex.response.status === 400) {
+        toast.error("Something went wrong");
+      }
+    }
   };
 
   renderTable = (cartItems) => {
@@ -75,7 +89,10 @@ class Cart extends Component {
             </h4>
           </div>
           <div className="col-4">
-            <button className="btn item-selected px-4 float-right">
+            <button
+              className="btn item-selected px-4 float-right"
+              onClick={this.handleSubmit}
+            >
               Adopt
             </button>
           </div>

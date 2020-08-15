@@ -23,7 +23,7 @@ class Login extends Form {
       window.location = "/";
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
-        const error = this.state.error;
+        const error = { ...this.state.error };
         error.email = ex.response.data;
         this.setState({ error });
       }
