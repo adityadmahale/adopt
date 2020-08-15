@@ -7,6 +7,7 @@ import { getPlants } from "../services/shopService";
 import { getCategories } from "../services/categoryService";
 import { getCarts } from "../services/cartService";
 import { paginate } from "../utils/paginate";
+import { Fade } from "react-animation-components";
 import "../sidenav.css";
 
 class Shop extends Component {
@@ -140,18 +141,22 @@ class Shop extends Component {
         <div className="row">
           {filteredPlants.map((plant) => (
             <div className="col-12 col-md-4" key={plant._id}>
-              <Card
-                {...this.props}
-                item={plant}
-                onAdd={onAdd}
-                cartItems={cartItems}
-                user={user}
-                adopted={this.state.adoptedPlants.some((p) => p === plant.name)}
-                onClick={() => {
-                  this.setState({ selectedPlant: { ...plant } });
-                  this.openNav();
-                }}
-              />
+              <Fade in delay={"0"} duration={"1000"}>
+                <Card
+                  {...this.props}
+                  item={plant}
+                  onAdd={onAdd}
+                  cartItems={cartItems}
+                  user={user}
+                  adopted={this.state.adoptedPlants.some(
+                    (p) => p === plant.name
+                  )}
+                  onClick={() => {
+                    this.setState({ selectedPlant: { ...plant } });
+                    this.openNav();
+                  }}
+                />
+              </Fade>
             </div>
           ))}
         </div>
