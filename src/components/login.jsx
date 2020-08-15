@@ -2,6 +2,7 @@ import React from "react";
 import { Link, Redirect } from "react-router-dom";
 import auth from "../services/authService";
 import Form from "./commons/form";
+import { FadeTransform } from "react-animation-components";
 import Joi from "joi";
 
 class Login extends Form {
@@ -43,22 +44,31 @@ class Login extends Form {
     if (this.props.user) return <Redirect to="/" />;
 
     return (
-      <div className="card w-75 mx-auto">
-        <div className="card-body">
-          <h3 className="mb-4">Login</h3>
-          <form>
-            {this.renderInput("text", "email", "Email")}
-            {this.renderInput("password", "password", "Password")}
-            {this.renderButton("Login")}
-          </form>
-          <p className="mt-3">
-            Not registered?{" "}
-            <Link to="/register" className="text-green">
-              Create an account
-            </Link>
-          </p>
+      <FadeTransform
+        in
+        delay={"0"}
+        duration={"1000"}
+        transformProps={{
+          exitTransform: "translateY(-20px)",
+        }}
+      >
+        <div className="card w-75 mx-auto">
+          <div className="card-body">
+            <h3 className="mb-4">Login</h3>
+            <form>
+              {this.renderInput("text", "email", "Email")}
+              {this.renderInput("password", "password", "Password")}
+              {this.renderButton("Login")}
+            </form>
+            <p className="mt-3">
+              Not registered?{" "}
+              <Link to="/register" className="text-green">
+                Create an account
+              </Link>
+            </p>
+          </div>
         </div>
-      </div>
+      </FadeTransform>
     );
   }
 }

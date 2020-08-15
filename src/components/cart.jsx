@@ -3,6 +3,7 @@ import Pagination from "./pagination";
 import { paginate } from "../utils/paginate";
 import { postCart } from "../services/cartService";
 import { toast } from "react-toastify";
+import { FadeTransform } from "react-animation-components";
 
 class Cart extends Component {
   state = {
@@ -75,36 +76,47 @@ class Cart extends Component {
     const { cartItems: allCartItems } = this.props;
     const { pageNumber, pageSize } = this.state;
     const cartSize = allCartItems.length;
-    if (cartSize < 1) return <h4>No plants added</h4>;
+    if (cartSize < 1) return <h4>Your cart is empty.</h4>;
 
     const cartItems = paginate(allCartItems, pageSize, pageNumber);
 
     return (
-      <div className="mx-auto card p-3 cart">
-        <div className="row">
-          <div className="col-8">
-            <h4>
-              Cart{" "}
-              <span className="badge badge-pill badge-warning">{cartSize}</span>
-            </h4>
+      <FadeTransform
+        in
+        delay={"0"}
+        duration={"1000"}
+        transformProps={{
+          exitTransform: "translateY(-20px)",
+        }}
+      >
+        <div className="mx-auto card p-3 cart">
+          <div className="row">
+            <div className="col-8">
+              <h4>
+                Cart{" "}
+                <span className="badge badge-pill badge-warning">
+                  {cartSize}
+                </span>
+              </h4>
+            </div>
+            <div className="col-4">
+              <button
+                className="btn item-selected px-4 float-right"
+                onClick={this.handleSubmit}
+              >
+                Adopt
+              </button>
+            </div>
           </div>
-          <div className="col-4">
-            <button
-              className="btn item-selected px-4 float-right"
-              onClick={this.handleSubmit}
-            >
-              Adopt
-            </button>
-          </div>
+          {this.renderTable(cartItems)}
+          <Pagination
+            pageSize={pageSize}
+            itemNumbers={cartSize}
+            pageNumber={pageNumber}
+            onPageChange={this.handlePageChange}
+          />
         </div>
-        {this.renderTable(cartItems)}
-        <Pagination
-          pageSize={pageSize}
-          itemNumbers={cartSize}
-          pageNumber={pageNumber}
-          onPageChange={this.handlePageChange}
-        />
-      </div>
+      </FadeTransform>
     );
   }
 }

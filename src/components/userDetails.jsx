@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { getCarts } from "../services/cartService";
 import Pagination from "./pagination";
 import { paginate } from "../utils/paginate";
+import { FadeTransform } from "react-animation-components";
 
 class UserDetails extends Component {
   state = {
@@ -58,16 +59,25 @@ class UserDetails extends Component {
     const carts = paginate(allCarts, pageSize, pageNumber);
 
     return user ? (
-      <div className="mx-auto card p-3 cart">
-        <h1>{user.username}</h1>
-        {this.renderTable(carts, cartsSize)}
-        <Pagination
-          pageSize={pageSize}
-          itemNumbers={cartsSize}
-          pageNumber={pageNumber}
-          onPageChange={this.handlePageChange}
-        />
-      </div>
+      <FadeTransform
+        in
+        delay={"0"}
+        duration={"1000"}
+        transformProps={{
+          exitTransform: "translateY(-20px)",
+        }}
+      >
+        <div className="mx-auto card p-3 cart">
+          <h1>{user.username}</h1>
+          {this.renderTable(carts, cartsSize)}
+          <Pagination
+            pageSize={pageSize}
+            itemNumbers={cartsSize}
+            pageNumber={pageNumber}
+            onPageChange={this.handlePageChange}
+          />
+        </div>
+      </FadeTransform>
     ) : null;
   }
 }
