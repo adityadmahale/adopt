@@ -19,7 +19,10 @@ class Card extends Component {
         className="btn item-selected px-4"
         onClick={() => {
           if (!user) {
-            this.props.history.push("/login");
+            this.props.history.push({
+              pathname: "/login",
+              state: { path: "/shop" },
+            });
             toast.warn("Log in before adding to cart");
             return;
           }
