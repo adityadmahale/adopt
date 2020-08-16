@@ -141,7 +141,7 @@ class Shop extends Component {
         <div className="row">
           {filteredPlants.map((plant) => (
             <div className="col-12 col-md-4" key={plant._id}>
-              <Fade in delay={"0"} duration={"1000"}>
+              <Fade in duration={200}>
                 <Card
                   {...this.props}
                   item={plant}

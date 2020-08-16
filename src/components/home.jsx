@@ -4,7 +4,7 @@ import { Fade } from "react-animation-components";
 
 const Home = () => {
   return (
-    <Fade in delay={"0"} duration={"1000"}>
+    <Fade in duration={400}>
       <div className="card">
         <img
           className="card-img-top home-img p-0"

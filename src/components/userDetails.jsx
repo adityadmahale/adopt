@@ -61,8 +61,7 @@ class UserDetails extends Component {
     return user ? (
       <FadeTransform
         in
-        delay={"0"}
-        duration={"1000"}
+        duration={300}
         transformProps={{
           exitTransform: "translateY(-20px)",
         }}

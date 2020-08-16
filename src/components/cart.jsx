@@ -19,7 +19,11 @@ class Cart extends Component {
     try {
       const plants = this.props.cartItems.map((plant) => plant.name);
       await postCart(plants);
-      window.location = "/";
+      this.props.onEmpty();
+      const cartSize = plants.length;
+      const plant = cartSize > 1 ? "plants" : "plant";
+      toast.success(`Adopted ${cartSize} ${plant}`);
+      this.props.history.push("/");
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         toast.error("Something went wrong");
@@ -83,8 +87,7 @@ class Cart extends Component {
     return (
       <FadeTransform
         in
-        delay={"0"}
-        duration={"1000"}
+        duration={300}
         transformProps={{
           exitTransform: "translateY(-20px)",
         }}

@@ -13,7 +13,7 @@ import ProtectedRoute from "./commons/protectedRoute";
 class Body extends Component {
   state = {};
   render() {
-    const { cartItems, onAdd, onRemove, user } = this.props;
+    const { cartItems, onAdd, onRemove, user, onEmpty } = this.props;
 
     return (
       <section>
@@ -43,7 +43,12 @@ class Body extends Component {
               user={user}
               path="/cart"
               render={(props) => (
-                <Cart {...props} cartItems={cartItems} onRemove={onRemove} />
+                <Cart
+                  {...props}
+                  cartItems={cartItems}
+                  onRemove={onRemove}
+                  onEmpty={onEmpty}
+                />
               )}
             />
             <ProtectedRoute path="/logout" component={Logout} user={user} />

@@ -26,6 +26,10 @@ class App extends Component {
     this.setState({ cart });
   };
 
+  handleEmpty = () => {
+    this.setState({ cart: [] });
+  };
+
   render() {
     const { cart, user } = this.state;
     return (
@@ -36,6 +40,7 @@ class App extends Component {
           onAdd={this.handleAdd}
           cartItems={cart}
           onRemove={this.handleRemove}
+          onEmpty={this.handleEmpty}
           user={user}
         />
         <Footer />
