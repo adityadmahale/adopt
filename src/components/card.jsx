@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { toast } from "react-toastify";
 
 class Card extends Component {
   renderButton = () => {
@@ -17,7 +18,12 @@ class Card extends Component {
       <button
         className="btn item-selected px-4"
         onClick={() => {
-          if (!user) return this.props.history.push("/login");
+          if (!user) {
+            this.props.history.push("/login");
+            toast.warn("Log in before adding to cart");
+            return;
+          }
+
           onAdd(item);
         }}
         disabled={found}
