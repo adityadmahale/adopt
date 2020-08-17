@@ -9,6 +9,7 @@ import { getCarts } from "../services/cartService";
 import { paginate } from "../utils/paginate";
 import { Fade } from "react-animation-components";
 import "../sidenav.css";
+import Loader from "./commons/loader";
 
 class Shop extends Component {
   state = {
@@ -20,6 +21,7 @@ class Shop extends Component {
     categories: [],
     adoptedPlants: [],
     selectedPlant: null,
+    loading: true,
   };
 
   componentDidMount = async () => {
@@ -38,6 +40,7 @@ class Shop extends Component {
       categories: [{ _id: "0", name: "All" }, ...categories],
       plants,
       adoptedPlants,
+      loading: false,
     });
   };
 
@@ -115,6 +118,8 @@ class Shop extends Component {
   };
 
   render() {
+    if (this.state.loading) return <Loader />;
+
     const {
       categories: allCategories,
       categoryId,

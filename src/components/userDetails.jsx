@@ -3,12 +3,14 @@ import { getCarts } from "../services/cartService";
 import Pagination from "./pagination";
 import { paginate } from "../utils/paginate";
 import { FadeTransform } from "react-animation-components";
+import Loader from "./commons/loader";
 
 class UserDetails extends Component {
   state = {
     carts: [],
     pageSize: 6,
     pageNumber: 1,
+    loading: true,
   };
 
   handlePageChange = (pageNumber) => {
@@ -17,7 +19,7 @@ class UserDetails extends Component {
 
   componentDidMount = async () => {
     const { data: carts } = await getCarts();
-    this.setState({ carts });
+    this.setState({ carts, loading: false });
   };
 
   renderTable = (carts, cartsSize) => {
@@ -52,6 +54,8 @@ class UserDetails extends Component {
   };
 
   render() {
+    if (this.state.loading) return <Loader />;
+
     const { carts: allCarts, pageSize, pageNumber } = this.state;
     const { user } = this.props;
     const cartsSize = allCarts.length;
