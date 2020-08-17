@@ -104,6 +104,9 @@ class Shop extends Component {
                   alt={selectedPlant.name}
                 />
               </div>
+              <div className="text-justify px-3 mx-3">
+                {selectedPlant.description}
+              </div>
             </React.Fragment>
           )}
         </div>
