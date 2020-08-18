@@ -1,7 +1,6 @@
 import http from "./httpService";
-import { apiUrl } from "../config.json";
 
-const url = apiUrl + "/carts";
+const url = "/carts";
 
 export const postCart = function (plants) {
   return http.post(url, { plants });
