@@ -35,8 +35,16 @@
   overflow: scroll;
 }
 
+.sidenav-text {
+  min-width: 320px;
+}
+
 @media screen and (min-width: 992px) {
   .sidenav-content {
     width: 25%;
+  }
+
+  .sidenav-text {
+    min-width: 380px;
   }
 }
