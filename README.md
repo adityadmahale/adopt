@@ -2,7 +2,7 @@
 
 Taking inspiration from a podcast, I have created a website for the adoption of indoor plants. I have developed the website using React.js and Bootstrap for the front-end and Node.js/Express.js and MongoDB for the back-end.
 
-#Features:
+# Features:
 
 1. The website lists down different types of plants in the form of a card with images.
 2. Provides feature to filter plants based on their type.
